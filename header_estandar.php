@@ -14,7 +14,11 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="mapa.php">Mapa</a></li>
                     <li><a href="refugios.php">Refugios</a></li>
-                    <li><a href="buzon.php">Mensajes</a></li>
+                    <li id = "buzon-header">
+                        <a href="buzon.php">
+                            Mensajes
+                        </a>
+                    </li>
                     <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
                         <li class="admin-panel-dropdown">
                             <span class="admin-panel-trigger">Panel de Administrador</span>
@@ -51,3 +55,24 @@
         </nav>
     </div>
 </header>
+<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buzonHeader = document.getElementById('buzon-header');
+            
+            if (!buzonHeader) {
+                console.error('Elemento buzon-header no encontrado');
+                return;
+            }
+
+            fetch(`solicitar/notificaciones.php?id_usuario=<?php echo (int)$_SESSION['id_usuario']; ?>`)
+                .then(response => response.json())
+                .then(notificaciones => {
+                    if (notificaciones && notificaciones.count > 0) {
+                        buzonHeader.innerHTML += '<img src="img/notificacion.png" alt="Icono Buzón" class="icono-buzón-header" style="width: 17px;vertical-align: middle;">';
+                    }
+                })
+                .catch(error => console.error('Error en notificaciones:', error));
+        });
+    </script>
+<?php endif; ?>
