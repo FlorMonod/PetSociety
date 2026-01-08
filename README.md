@@ -4,7 +4,7 @@
 Este repositorio es un **fork** del proyecto original desarrollado en equipo como parte de la  
 **Tecnicatura Universitaria en Programación – UTN**.
 
-🔗 Repositorio original: https://github.com/
+🔗 Repositorio original: https://github.com/aZulSandiaIV/PetSociety
 
 ---
 
@@ -39,8 +39,3 @@ En este fork se pueden ver aportes propios y la estructura general del proyecto.
 - Integrar frontend con backend
 - Trabajar con bases de datos relacionales
 - Fortalecer habilidades de trabajo en equipo
-
----
-
-## 🚀 Estado del proyecto
-Proyecto académico finalizado.
